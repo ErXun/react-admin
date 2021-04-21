@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
-import { Button } from 'antd'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { Layout } from 'antd';
 import { deleteUserInfoAction } from '../../redux/actions/login_action';
+import MyHeader from './Header/header'
+import './admin.less'
+
+
+const { Sider, Content } = Layout;
+
 
 
 /**
@@ -19,17 +25,19 @@ class Admin extends Component {
   logout = () => {
     this.props.deleteUserInfo()
   }
-
   render() {
     const { user, isLogin } = this.props.userInfo
     if (!isLogin) {
       return <Redirect to="/login" />
     } else {
       return (
-        <div>
-          Admin,{user.username}
-          <Button onClick={this.logout}>退出登录</Button>
-        </div>
+        <Layout className="admin">
+          <Sider className="sider">Sider</Sider>
+          <Layout>
+            <MyHeader />
+            <Content className="content">Content</Content>
+          </Layout>
+        </Layout>
       )
     }
 

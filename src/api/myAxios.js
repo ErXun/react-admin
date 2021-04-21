@@ -2,6 +2,9 @@ import axios from 'axios'
 import { message } from 'antd'
 import qs from 'querystring'
 import { BASE_URL } from '@/config';
+import store from '@/redux/store'
+import { deleteUserInfoAction } from '../redux/actions/login_action';
+
 
 
 const instance = axios.create({
@@ -26,7 +29,12 @@ instance.interceptors.request.use(config => {
 instance.interceptors.response.use(response => {
   return response.data;
 }, error => {
-  message.error(error.message, 1)
+  if (error.response.status === 401) {
+    message.error('身份已过期，请重新登录！', 1)
+    store.dispatch(deleteUserInfoAction())
+  } else {
+    message.error(error.message, 1)
+  }
   // return Promise.reject(error);
   return new Promise(() => { })  //中断 Promise
 });

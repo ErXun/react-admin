@@ -21,7 +21,7 @@ class Login extends Component {
       if (status === 0) {
         this.props.saveUserInfo({
           user: data,
-          token: data.password
+          token: data._id
         })
         // 页面跳转
         this.props.history.replace('/admin')
