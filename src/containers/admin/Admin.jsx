@@ -5,6 +5,13 @@ import { Redirect } from 'react-router-dom'
 import { deleteUserInfoAction } from '../../redux/actions/login_action';
 
 
+/**
+ * ES6装饰器，decorator
+ */
+@connect(state => ({ userInfo: state.userInfo }), {
+  deleteUserInfo: deleteUserInfoAction
+})
+
 class Admin extends Component {
   componentDidMount() {
     console.log(`this.props`, this.props)
@@ -29,6 +36,8 @@ class Admin extends Component {
   }
 }
 
-export default connect(state => ({ userInfo: state.userInfo }), {
-  deleteUserInfo: deleteUserInfoAction
-})(Admin)
+export default Admin
+
+// export default connect(state => ({ userInfo: state.userInfo }), {
+//   deleteUserInfo: deleteUserInfoAction
+// })(Admin)

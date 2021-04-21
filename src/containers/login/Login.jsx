@@ -8,6 +8,11 @@ import { reqLogin } from '@/api'
 import './login.less'
 import icon from '../../assets/icon.png'
 
+
+@connect(state => ({ isLogin: state.userInfo.isLogin }), {
+  saveUserInfo: saveUserInfoAction
+})
+
 class Login extends Component {
   render() {
     const onLogin = async (values) => {
@@ -70,6 +75,9 @@ class Login extends Component {
   }
 }
 
-export default connect(state => ({ isLogin: state.userInfo.isLogin }), {
-  saveUserInfo: saveUserInfoAction
-})(Login)
+export default Login
+
+
+// export default connect(state => ({ isLogin: state.userInfo.isLogin }), {
+//   saveUserInfo: saveUserInfoAction
+// })(Login)
