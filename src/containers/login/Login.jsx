@@ -30,8 +30,9 @@ class Login extends Component {
       }
     };
     const { isLogin } = this.props
+    // 如果处于登录状态则直接进入home
     if (isLogin) {
-      return <Redirect to="/admin" />
+      return <Redirect to="/admin/home" />
     }
     return (
       <div id="login">
