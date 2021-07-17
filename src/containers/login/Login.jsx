@@ -6,7 +6,6 @@ import { Redirect } from 'react-router-dom';
 import { saveUserInfoAction } from '../../redux/actions/login_action';
 import { reqLogin } from '@/api'
 import './login.less'
-import icon from '../../assets/icon.png'
 
 
 @connect(state => ({ isLogin: state.userInfo.isLogin }), {
@@ -36,10 +35,10 @@ class Login extends Component {
     }
     return (
       <div id="login">
-        <header>
+        {/* <header>
           <img src={icon} alt="logo" />
           <h1>XXX-YYY</h1>
-        </header>
+        </header> */}
         <div className="login-action">
           <h1>用户登录</h1>
           <Form
